@@ -24,9 +24,7 @@ modeSwitch.addEventListener("click", () => {
 });
 
 const modal = document.getElementById("simpleModal");
-
 const modalBtn = document.getElementById("modalBtn");
-
 const closeBtn = document.querySelector(".closeBtn");
 
 window.addEventListener("click", outsideClick);
@@ -47,31 +45,39 @@ function outsideClick(e) {
   }
 }
 
-const modal1 = document.getElementById("simpleModal1");
-const modalBtn1 = document.getElementById("modalBtn1");
-const closeBtn1 = document.querySelector(".closeBtn1");
 
-modalBtn1.addEventListener("click", openModal1);
-closeBtn1.addEventListener("click", closeModal1);
-
-function openModal1() {
-  modal1.style.display = "block";
-}
-
-function closeModal1() {
-  modal1.style.display = "none";
-}
-
-addEventListener("submit", createProject);
+document.querySelector(".submitBtn").addEventListener("click", createProject);
 
 function createProject(e) {
   e.preventDefault();
   const title = document.querySelector(".textinput").value;
   let navbar = document.querySelector( ".menu-links" )
-  navbar.innerHTML += `     <li  class="nav-link">
-  <a href="#">
-      <i class='bx bx-bell icon'></i>
-      <span class="text nav-text">${title}</span>
-  </a>
-</li>`;
+
+  const div = document.createElement("div");
+  const li = document.createElement("li");
+  const a = document.createElement("a");
+  const i = document.createElement("i");
+  const span = document.createElement("span");
+  const trash = document.createElement("i");
+
+  
+  li.className = "nav-link";
+  a.href = "#";
+  i.className = "bx bx-notepad icon";
+  span.className = "text nav-text";
+ span.textContent = title;
+ trash.className = "bx bx-trash icon iconTrash";
+
+    navbar.appendChild(div);
+    div.appendChild(li);
+    li.appendChild(a);
+    a.appendChild(i);
+    a.appendChild(span);
+    li.appendChild(trash);
+
+
 }
+
+
+
+

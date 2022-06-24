@@ -545,7 +545,7 @@ align-items: flex-start;
 }
 
 .timeblock span {
-    padding: 1vh;
+    padding: 1.2vh;
     border-bottom:rgba(0, 0, 0, 0.03) solid 1px;
-    min-width: 200px;
+    min-width: 240px;
 }
