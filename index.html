@@ -1,129 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <nav class="sidebar close">
-        <header>
-            <div class="image-text">
-                <span class="image">
-                </span>
+      <header>
+        <div class="image-text">
+          <span class="image"> </span>
 
-                <div class="text logo-text">
-                    
-                    <span class="name">MyLife <i class='bx bx-bowl-hot' ></i></span>
-                    <span class="profession">Planner</span>
-                </div>
-            </div>
-
-            <i class='bx bx-chevron-right toggle'></i>
-        </header>
-
-        <div class="menu-bar">
-            <div class="menu">
-
-                <li style="display:none;" class="search-box">
-                    <i class='bx bx-search icon'></i>
-                    <input type="text" placeholder="Search...">
-                </li>
-
-                <ul class="menu-links">
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-time icon' ></i>
-                            <span class="text nav-text">Daily Timeblock</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-list-check icon' ></i>
-                            <span class="text nav-text">To Do</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-bell icon'></i>
-                            <span class="text nav-text">Projects</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-edit icon' ></i>
-                            <span class="text nav-text">Notes</span>
-                        </a>
-                    </li>
-
-                    <li style="display:none;"  class="nav-link">
-                        <a href="#">
-                            <i class='bx bxs-flag-checkered icon'></i>
-                            <span class="text nav-text">Goals</span>
-                        </a>
-                    </li>
-
-                    <li style="display:none;" class="nav-link">
-                        <a href="#">
-                            <i  class='bx bx-wallet icon' ></i>
-                            <span class="text nav-text">Wallets</span>
-                        </a>
-                    </li>
-
-                </ul>
-            </div>
-
-            <div class="bottom-content">
-                <li style="display:none;" class="">
-                    <a href="#">
-                        <i class='bx bx-log-out icon' ></i>
-                        <span class="text nav-text">Logout</span>
-                    </a>
-                </li>
-
-                <li class="mode">
-                    <div class="sun-moon">
-                        <i class='bx bx-moon icon moon'></i>
-                        <i class='bx bx-sun icon sun'></i>
-                    </div>
-                    <span class="mode-text text">Dark mode</span>
-
-                    <div class="toggle-switch">
-                        <span class="switch"></span>
-                    </div>
-                </li>
-                
-            </div>
+          <div class="text logo-text">
+            <span class="name">MyLife <i class="bx bx-bowl-hot"></i></span>
+            <span class="profession">Planner</span>
+          </div>
         </div>
 
+        <i class="bx bx-chevron-right toggle"></i>
+      </header>
+
+      <div class="menu-bar">
+        <div class="menu">
+          <li style="display: none" class="search-box">
+            <i class="bx bx-search icon"></i>
+            <input type="text" placeholder="Search..." />
+          </li>
+
+          <ul class="menu-links">
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-time icon"></i>
+                <span class="text nav-text">Daily Timeblock</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-list-check icon"></i>
+                <span class="text nav-text">To Do</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-bell icon"></i>
+                <span class="text nav-text">Projects</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-edit icon"></i>
+                <span class="text nav-text">Notes</span>
+              </a>
+            </li>
+
+            <li style="display: none" class="nav-link">
+              <a href="#">
+                <i class="bx bxs-flag-checkered icon"></i>
+                <span class="text nav-text">Goals</span>
+              </a>
+            </li>
+
+            <li style="display: none" class="nav-link">
+              <a href="#">
+                <i class="bx bx-wallet icon"></i>
+                <span class="text nav-text">Wallets</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bottom-content">
+          <li style="display: none" class="">
+            <a href="#">
+              <i class="bx bx-log-out icon"></i>
+              <span class="text nav-text">Logout</span>
+            </a>
+          </li>
+
+          <li class="mode">
+            <div class="sun-moon">
+              <i class="bx bx-moon icon moon"></i>
+              <i class="bx bx-sun icon sun"></i>
+            </div>
+            <span class="mode-text text">Dark mode</span>
+
+            <div class="toggle-switch">
+              <span class="switch"></span>
+            </div>
+          </li>
+        </div>
+      </div>
     </nav>
 
     <section class="home">
-
-        <div class="parent">
-            <div class="div1"> <h1>date and time</h1> </div>
-            <div class="div2"> <h1>todo</h1> </div>
-            <div class="div3"> <h1>notes</h1> </div>
-            <div class="div4"> <h1>Projects</h1> </div>
-            <div class="div5"> <h1>Timeblock</h1> </div>
+      <div class="parent">
+    
+        <div class="div2"><h1>todo</h1>
+   
+        <div class="card">
+            <label class="tasks-list-item">
+                <input type="checkbox" name="task_3" value="1" class="tasks-list-cb">
+                <span class="tasks-list-mark"></span>
+                <span class="tasks-list-desc">lorem ipmsum ew0gje0wjgew0ij0e</span>
+              </label>
+              <i class='bx bx-trash' ></i>
+        </div>
+         
+        <div class="card">
+            <label class="tasks-list-item">
+                <input type="checkbox" name="task_3" value="1" class="tasks-list-cb">
+                <span class="tasks-list-mark"></span>
+                <span class="tasks-list-desc">lorem ipmsum ew0gje0wjgew0ij0e</span>
+              </label>
+              <i class='bx bx-trash' ></i>
+        </div>
+         
+        <div class="card">
+            <label class="tasks-list-item">
+                <input type="checkbox" name="task_3" value="1" class="tasks-list-cb">
+                <span class="tasks-list-mark"></span>
+                <span class="tasks-list-desc">lorem ipmsum ew0gje0wjgew0ij0e</span>
+              </label>
+              <i class='bx bx-trash' ></i>
+        </div>
+        
+        </div>
+        <div class="div3"><h1>notes</h1>
+        
+            <div class="card">
+                <label class="tasks-list-item">
+                    <input type="checkbox" name="task_3" value="1" class="tasks-list-cb">
+                    <span class="tasks-list-mark"></span>
+                    <span class="tasks-list-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit necessitatibus at doloremque fugiat iusto corporis, facilis maxime quia sed in cum excepturi architecto vel sapiente nostrum commodi atque, quisquam placeat. lorem</span>
+                  </label>
+                  <i class='bx bx-trash' ></i>
             </div>
+        </div>
+        <div class="div4"><h1>Projects</h1></div>
+        <div class="div5">
+            <div><h1>Timeblock</h1></div>
+        <div class="timeblock">
+          <div class="time">
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+            <span>10</span>
+            <span>11</span>
+            <span>12</span>
+            <span>13</span>
+            <span>14</span>
+            <span>15</span>
+            <span>16</span>
+            <span>17</span>
+            <span>18</span>
+            <span>19</span>
+            <span>20</span>
+            <span>21</span>
+            <span>22</span>
+            <span>23</span>
+          </div>
 
-       
-
-
-       
+          <div class="block1">
+            <span>5.30</span>
+            <span>6.30</span>
+            <span>7.30</span>
+            <span>8.30</span>
+            <span>9.30</span>
+            <span>10.30</span>
+            <span>11.30</span>
+            <span>12.30</span>
+            <span>13.30</span>
+            <span>14.30</span>
+            <span>15.30</span>
+            <span>16.30</span>
+            <span>17.30</span>
+            <span>18.30</span>
+            <span>19.30</span>
+            <span>20.30</span>
+            <span>21.30</span>
+            <span>22.30</span>
+            <span>23.30</span>
+          </div>
+        </div>
+        
+        </div>
+      </div>
     </section>
-
-
-
-</body>
-<script src="index.js"></script>
+  </body>
+  <script src="index.js"></script>
 </html>
