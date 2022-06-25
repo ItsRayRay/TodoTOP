@@ -1,3 +1,5 @@
+// light dark mode
+
 const body = document.querySelector("body"),
   sidebar = body.querySelector("nav"),
   toggle = body.querySelector(".toggle"),
@@ -23,6 +25,8 @@ modeSwitch.addEventListener("click", () => {
   }
 });
 
+// modal JS
+
 const modal = document.getElementById("simpleModal");
 const modalBtn = document.getElementById("modalBtn");
 const closeBtn = document.querySelector(".closeBtn");
@@ -45,13 +49,14 @@ function outsideClick(e) {
   }
 }
 
+// create project code
 
 document.querySelector(".submitBtn").addEventListener("click", createProject);
 
 function createProject(e) {
   e.preventDefault();
   const title = document.querySelector(".textinput").value;
-  let navbar = document.querySelector( ".menu-links" )
+  const navbar = document.querySelector(".menu-links");
 
   const div = document.createElement("div");
   const li = document.createElement("li");
@@ -60,24 +65,92 @@ function createProject(e) {
   const span = document.createElement("span");
   const trash = document.createElement("i");
 
-  
-  li.className = "nav-link";
-  a.href = "#";
-  i.className = "bx bx-notepad icon";
-  span.className = "text nav-text";
- span.textContent = title;
- trash.className = "bx bx-trash icon iconTrash";
+  // store project title in local storage with date as unique key
+  // add the ID to the trashbutton as a reference which to delete
+  projectObj = {
+    title: title,
+    id: Date.now(),
+
+    renderDom: function () {
+      li.className = "nav-link";
+      a.href = "#";
+      i.className = "bx bx-notepad icon";
+      span.className = "text nav-text";
+      span.textContent = this.title;
+      trash.className = "bx bx-trash icon iconTrash";
+      trash.id = this.id;
+
+      navbar.appendChild(div);
+      div.appendChild(li);
+      li.appendChild(a);
+      a.appendChild(i);
+      a.appendChild(span);
+      li.appendChild(trash);
+    },
+  };
+
+  projectObj.renderDom();
+
+  localStorage.setItem(projectObj.id, JSON.stringify(projectObj));
+  console.log(localStorage.getItem(projectObj.id));
+
+  trash.addEventListener("click", removeFromLocalStorage);
+  function removeFromLocalStorage(e) {
+    e.preventDefault();
+    localStorage.removeItem(e.target.id);
+    li.remove();
+  }
+}
+
+//renders projects from local storage
+
+function renderProjects() {
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    const value = localStorage.getItem(key);
+    const projectObj = JSON.parse(value);
+
+    const navbar = document.querySelector(".menu-links");
+    const div = document.createElement("div");
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    const ie = document.createElement("i");
+    const span = document.createElement("span");
+    const trash = document.createElement("i");
+
+    // render projects from local storage
+
+    li.className = "nav-link";
+    a.href = "#";
+    ie.className = "bx bx-notepad icon";
+    span.className = "text nav-text";
+    span.textContent = projectObj.title;
+    trash.className = "bx bx-trash icon iconTrash";
+    trash.id = projectObj.id;
 
     navbar.appendChild(div);
     div.appendChild(li);
     li.appendChild(a);
-    a.appendChild(i);
+    a.appendChild(ie);
     a.appendChild(span);
     li.appendChild(trash);
 
+    console.log(projectObj.title + " " + projectObj.id);
 
+
+      // remove from localstorare & DOM when trash button clicked
+  trash.addEventListener("click", removeFromLocalStorage);
+  function removeFromLocalStorage(e) {
+    e.preventDefault();
+    localStorage.removeItem(e.target.id);
+    li.remove();
+
+  }
+
+  }
+  
 }
-
+renderProjects();
 
 
 
