@@ -240,20 +240,61 @@ function renderProjects() {
 
 
 
-        const todoJson = JSON.parse(localStorage.getItem(projectObj.id));
-        
+        let todoJson = JSON.parse(localStorage.getItem(projectObj.id));
+
         todoJson.toDoList.push(todoObj);
 
         
         localStorage.setItem(projectObj.id, JSON.stringify(todoJson));
 
+        todoJson = JSON.parse(localStorage.getItem(projectObj.id));
+        
+        console.log(todoJson);
 
+        // get items from json array and render them on the DOM
 
+        let todoList = todoJson.toDoList;
 
+        for (let i = 0; i < todoList.length; i++) {
+          const todoLabel = document.createElement("label");
+          const todoInput = document.createElement("input");
+          const todoSpanFirst = document.createElement("span");
+          const todoSpanSecond = document.createElement("span");
+          const trash = document.createElement("i");
+          trash.className = "bx bx-trash icon iconTrash";
 
+          todoLabel.className = "tasks-list-item";
+          todoInput.className = "tasks-list-cb";
+          todoInput.type = "checkbox";
+          todoInput.name = "tasks";
 
+          // create a new task
+          todoSpanFirst.className = "tasks-list-mark";
+          todoSpanSecond.className = "tasks-list-desc";
 
+          //takes input from todo input field and adds it to the todo list
+          todoSpanSecond.textContent = todoList[i].title;
 
+          todoBody.appendChild(todoLabel);
+          todoLabel.appendChild(todoInput);
+          todoLabel.appendChild(todoSpanFirst);
+          todoLabel.appendChild(todoSpanSecond);
+          todoLabel.appendChild(trash);
+
+          trash.addEventListener("click", (e) => {
+            e.preventDefault();
+            todoLabel.remove();
+          }
+          )
+
+          todoInput.addEventListener("click", () => {
+            console.log("checked ")
+            todoList[i].completed = true;
+          }
+          )
+        }
+
+        
 
 
 
