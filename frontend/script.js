@@ -191,7 +191,7 @@ function renderProjects() {
       todoButton.addEventListener("click", (e) => {
         e.preventDefault();
 
-        console.log("clicked");
+ 
         
        const todoLabel= document.createElement("label");
        const todoInput =   document.createElement("input");
@@ -202,12 +202,21 @@ function renderProjects() {
       todoInput.className = "tasks-list-cb";
       todoInput.type = "checkbox";
       todoInput.name = "tasks";
-      todoInput.value = "1";
+
+        todoInput.value = todoInput.value;
+
+        console.log(todoInput.textContent);
 
         todoSpanFirst.className = "tasks-list-mark";
         todoSpanSecond.className = "tasks-list-desc";
 
-        todoSpanSecond.textContent = todoInput.textContent
+
+
+        todoSpanSecond.textContent = "test"
+
+
+
+
 
         todoBody.appendChild(todoLabel);
         todoLabel.appendChild(todoInput);
