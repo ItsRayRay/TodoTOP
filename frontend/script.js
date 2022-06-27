@@ -101,9 +101,8 @@ function createProject(e) {
     localStorage.removeItem(e.target.id);
     li.remove();
 
-    const homeSection = document.querySelector(".home")
+    const homeSection = document.querySelector(".home");
     homeSection.textContent = "";
-
   }
 }
 
@@ -140,74 +139,99 @@ function renderProjects() {
     a.appendChild(span);
     li.appendChild(trash);
 
-   
-
-
     const todoBtn = document.querySelector(`[href='${projectObj.id}']`);
 
     todoBtn.addEventListener("click", (e) => {
       e.preventDefault();
       console.log(projectObj.id);
 
-
-
-
-      const homeSection = document.querySelector(".home")
-      const toDo =  document.createElement("section");
+      const homeSection = document.querySelector(".home");
+      const toDo = document.createElement("section");
       const todoHeader = document.createElement("header");
       const todoBody = document.createElement("div");
+      const todoFooter = document.createElement("footer");
+      const todoForm = document.createElement("form");
+      const todoInput = document.createElement("input");
+      const todoButton = document.createElement("button");
+      const toDoTitle = document.createElement("h2");
+      const closeBtn = document.createElement("span");
+
+      todoForm.className = "todo-form";
+      todoInput.className = "todo-input";
+      todoButton.className = "todo-button";
       todoBody.className = "todo-body";
       todoHeader.className = "todo-header";
+      todoFooter.className = "todo-footer";
       toDo.className = "todo";
-      const toDoTitle = document.createElement("h2");
-      toDoTitle.className = "todo-title";
-      toDoTitle.textContent = projectObj.title;
-      const closeBtn = document.createElement("span");
       closeBtn.className = "close";
-      closeBtn.textContent = `X`
+      toDoTitle.className = "todo-title";
+
+      closeBtn.textContent = `X`;
+      toDoTitle.textContent = projectObj.title;
+      todoInput.placeholder = "Add a task";
+      todoButton.textContent = "Add";
+
+      homeSection.textContent = "";
+
+      homeSection.appendChild(toDo);
+
+      toDo.appendChild(todoHeader);
+      toDo.appendChild(todoBody);
+      toDo.appendChild(todoFooter);
+
+      todoHeader.appendChild(toDoTitle);
+      todoHeader.appendChild(closeBtn);
+
+      todoFooter.appendChild(todoForm);
+      todoForm.appendChild(todoInput);
+      todoForm.appendChild(todoButton);
 
 
+
+      todoButton.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        console.log("clicked");
+        
+       const todoLabel= document.createElement("label");
+       const todoInput =   document.createElement("input");
+      const todoSpanFirst =  document.createElement("span");
+      const todoSpanSecond = document.createElement("span");
+
+      todoLabel.className = "tasks-list-item";
+      todoInput.className = "tasks-list-cb";
+      todoInput.type = "checkbox";
+      todoInput.name = "tasks";
+      todoInput.value = "1";
+
+        todoSpanFirst.className = "tasks-list-mark";
+        todoSpanSecond.className = "tasks-list-desc";
+
+        todoSpanSecond.textContent = todoInput.textContent
+
+        todoBody.appendChild(todoLabel);
+        todoLabel.appendChild(todoInput);
+        todoLabel.appendChild(todoSpanFirst);
+        todoLabel.appendChild(todoSpanSecond);
+
+      });
+
+
+
+      closeBtn.addEventListener("click", () => {
         homeSection.textContent = "";
+      });
+    });
 
-
-        homeSection.appendChild(toDo);
-
-        toDo.appendChild(todoHeader);
-        toDo.appendChild(todoBody);
-        todoHeader.appendChild(toDoTitle);
-        todoHeader.appendChild(closeBtn);
-
-        closeBtn.addEventListener("click", () => {
-          homeSection.textContent = "";
-        })
-
-
-
-    })
-
-
-
-
-
-
-      // remove from localstorare & DOM when trash button clicked
-  trash.addEventListener("click", removeFromLocalStorage);
-  function removeFromLocalStorage(e) {
-    e.preventDefault();
-    localStorage.removeItem(e.target.id);
-    li.remove();
-    const homeSection = document.querySelector(".home")
-    homeSection.textContent = "";
-
-
+    // remove from localstorare & DOM when trash button clicked
+    trash.addEventListener("click", removeFromLocalStorage);
+    function removeFromLocalStorage(e) {
+      e.preventDefault();
+      localStorage.removeItem(e.target.id);
+      li.remove();
+      const homeSection = document.querySelector(".home");
+      homeSection.textContent = "";
+    }
   }
-
-
-  
-
-
-  }
-  
 }
 renderProjects();
-
