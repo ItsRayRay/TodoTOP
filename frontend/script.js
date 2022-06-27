@@ -70,6 +70,8 @@ function createProject(e) {
   projectObj = {
     title: title,
     id: Date.now(),
+    toDoList: [],
+
 
     renderDom: function () {
       li.className = "nav-link";
@@ -222,14 +224,34 @@ function renderProjects() {
 
 
 
-        // add todo to local storage on existing json file
+        // add todo to local storage on existing json file inside of an array
         const todoObj = {
           title: todoSpanSecond.textContent,
           id: Date.now(),
           completed: false,
         }
 
-        localStorage.getItem(projectObj.id);
+        
+
+        todoInput.addEventListener("click", () => {
+          console.log("checked ")
+          todoObj.completed = true;
+        })
+
+
+
+        const todoJson = JSON.parse(localStorage.getItem(projectObj.id));
+        
+        todoJson.toDoList.push(todoObj);
+
+        
+        localStorage.setItem(projectObj.id, JSON.stringify(todoJson));
+
+
+
+
+
+
 
 
 

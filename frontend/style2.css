@@ -430,6 +430,7 @@ body.dark .home .text{
 .iconTrash:hover {
     cursor: pointer;
     color: red;
+    font-size: larger;
 }
 
 .textinput {
@@ -577,7 +578,7 @@ max-width: 50%;
     position: relative;
     line-height: 24px;
     padding: 7px 15px;
-    color: #5d6b6c;
+    color: #121718;
     text-shadow: 0 1px rgba(255, 255, 255, 0.7);
     background: #f0f1f2;
     border-bottom: 1px solid #d1d1d1;
@@ -678,7 +679,7 @@ max-width: 50%;
   
   .tasks-list-desc {
     font-weight: bold;
-    color: #8a9a9b;
+    color: #474f50;
   }
   
   .tasks-list-cb:checked ~ .tasks-list-desc {
