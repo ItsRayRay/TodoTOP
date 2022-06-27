@@ -86,6 +86,7 @@ function createProject(e) {
       a.appendChild(i);
       a.appendChild(span);
       li.appendChild(trash);
+      location.reload();
     },
   };
 
@@ -99,6 +100,10 @@ function createProject(e) {
     e.preventDefault();
     localStorage.removeItem(e.target.id);
     li.remove();
+
+    const homeSection = document.querySelector(".home")
+    homeSection.textContent = "";
+
   }
 }
 
@@ -138,12 +143,6 @@ function renderProjects() {
    
 
 
-
-      
-  
-
-
-
     const todoBtn = document.querySelector(`[href='${projectObj.id}']`);
 
     todoBtn.addEventListener("click", (e) => {
@@ -158,21 +157,23 @@ function renderProjects() {
       toDo.className = "todo";
       const toDoTitle = document.createElement("h2");
       toDoTitle.textContent = projectObj.title;
+      const closeBtn = document.createElement("span");
+      closeBtn.className = "close";
+      closeBtn.textContent = `X`
+
 
         homeSection.textContent = "";
-      
         homeSection.appendChild(toDo);
         toDo.appendChild(toDoTitle);
+        toDo.appendChild(closeBtn);
+
+        closeBtn.addEventListener("click", () => {
+          homeSection.textContent = "";
+        })
 
 
 
     })
-
-
-
-
-
-
 
 
 
@@ -185,6 +186,8 @@ function renderProjects() {
     e.preventDefault();
     localStorage.removeItem(e.target.id);
     li.remove();
+    const homeSection = document.querySelector(".home")
+    homeSection.textContent = "";
 
 
   }
