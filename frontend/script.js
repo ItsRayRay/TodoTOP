@@ -151,13 +151,13 @@ function renderProjects() {
       const todoBody = document.createElement("div");
       const todoFooter = document.createElement("footer");
       const todoForm = document.createElement("form");
-      const todoInput = document.createElement("input");
+      const todoInputFill = document.createElement("input");
       const todoButton = document.createElement("button");
       const toDoTitle = document.createElement("h2");
       const closeBtn = document.createElement("span");
 
       todoForm.className = "todo-form";
-      todoInput.className = "todo-input";
+      todoInputFill.className = "todo-input";
       todoButton.className = "todo-button";
       todoBody.className = "todo-body";
       todoHeader.className = "todo-header";
@@ -168,7 +168,7 @@ function renderProjects() {
 
       closeBtn.textContent = `X`;
       toDoTitle.textContent = projectObj.title;
-      todoInput.placeholder = "Add a task";
+      todoInputFill.placeholder = "Add a task";
       todoButton.textContent = "Add";
 
       homeSection.textContent = "";
@@ -183,11 +183,11 @@ function renderProjects() {
       todoHeader.appendChild(closeBtn);
 
       todoFooter.appendChild(todoForm);
-      todoForm.appendChild(todoInput);
+      todoForm.appendChild(todoInputFill);
       todoForm.appendChild(todoButton);
 
 
-
+      // add todo to local storage and on DOM
       todoButton.addEventListener("click", (e) => {
         e.preventDefault();
 
@@ -203,17 +203,13 @@ function renderProjects() {
       todoInput.type = "checkbox";
       todoInput.name = "tasks";
 
-        todoInput.value = todoInput.value;
 
-        console.log(todoInput.textContent);
-
+        // create a new task
         todoSpanFirst.className = "tasks-list-mark";
         todoSpanSecond.className = "tasks-list-desc";
 
-
-
-        todoSpanSecond.textContent = "test"
-
+        //takes input from todo input field and adds it to the todo list
+        todoSpanSecond.textContent = todoInputFill.value;
 
 
 
