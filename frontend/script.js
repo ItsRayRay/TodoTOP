@@ -143,7 +143,6 @@ function renderProjects() {
 
     todoBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      console.log(projectObj.id);
 
       const homeSection = document.querySelector(".home");
       const toDo = document.createElement("section");
@@ -186,23 +185,21 @@ function renderProjects() {
       todoForm.appendChild(todoInputFill);
       todoForm.appendChild(todoButton);
 
-
       // add todo to local storage and on DOM
       todoButton.addEventListener("click", (e) => {
         e.preventDefault();
 
- 
-        
-       const todoLabel= document.createElement("label");
-       const todoInput =   document.createElement("input");
-      const todoSpanFirst =  document.createElement("span");
-      const todoSpanSecond = document.createElement("span");
+        const todoLabel = document.createElement("label");
+        const todoInput = document.createElement("input");
+        const todoSpanFirst = document.createElement("span");
+        const todoSpanSecond = document.createElement("span");
+        const trash = document.createElement("i");
+        trash.className = "bx bx-trash icon iconTrash";
 
-      todoLabel.className = "tasks-list-item";
-      todoInput.className = "tasks-list-cb";
-      todoInput.type = "checkbox";
-      todoInput.name = "tasks";
-
+        todoLabel.className = "tasks-list-item";
+        todoInput.className = "tasks-list-cb";
+        todoInput.type = "checkbox";
+        todoInput.name = "tasks";
 
         // create a new task
         todoSpanFirst.className = "tasks-list-mark";
@@ -211,17 +208,34 @@ function renderProjects() {
         //takes input from todo input field and adds it to the todo list
         todoSpanSecond.textContent = todoInputFill.value;
 
-
-
-
         todoBody.appendChild(todoLabel);
         todoLabel.appendChild(todoInput);
         todoLabel.appendChild(todoSpanFirst);
         todoLabel.appendChild(todoSpanSecond);
+        todoLabel.appendChild(trash);
+
+        trash.addEventListener("click", (e) => {
+          e.preventDefault();
+          todoLabel.remove();
+        })
+
+
+
+
+        // add todo to local storage on existing json file
+        const todoObj = {
+          title: todoSpanSecond.textContent,
+          id: Date.now(),
+          completed: false,
+        }
+
+        localStorage.getItem(projectObj.id);
+
+
+
+
 
       });
-
-
 
       closeBtn.addEventListener("click", () => {
         homeSection.textContent = "";
