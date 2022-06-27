@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="style2.css">
+
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+</head>
+</head>
+
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+
+                </span>
+
+                <div class="text logo-text">
+                    <span class="name">MyProject <i class="bx bx-bowl-hot"></i></span>
+                    <span class="profession">Planner</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+
+                <li style="display: none" class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Search...">
+                </li>
+
+                <ul class="menu-links">
+                    <li id="modalBtn" class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-folder-plus icon'></i>
+                            <span class="text nav-text">Add Project</span>
+                        </a>
+                    </li>
+                    <hr>
+
+                <!--   <li class="nav-link">
+                        <a href="#1">
+                          <i class="bx bx-edit icon"></i>
+                          <span class="text nav-text">Notes</span>
+                        </a>
+                      </li>
+          
+                      <li  class="nav-link">
+                        <a href="#2">
+                          <i class="bx bxs-flag-checkered icon"></i>
+                          <span class="text nav-text">Goals</span>
+                        </a>
+                      </li>--> 
+                    
+
+
+            </div>
+
+            <div class="bottom-content">
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+
+            </div>
+        </div>
+
+    </nav>
+
+    <section class="home">
+
+        
+     <!--  <section class="todo">
+
+            <h1>First To Do</h1>
+        </section> --> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+
+
+    <div id="simpleModal" class="modal">
+        <div class="modal-content">
+            <span class="closeBtn ">&times;</span>
+            <h2 >Add Project</h2>
+            <form>
+                <input class="textinput" minlength="2" maxlength="11" type="text">
+                <input class="submitBtn" type="submit">
+            </form>
+        </div>
+    </div>
+
+
+
+</body>
+<script src="script.js"></script>
+
+</html>
