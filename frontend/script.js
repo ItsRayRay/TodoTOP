@@ -154,8 +154,13 @@ function renderProjects() {
 
       const homeSection = document.querySelector(".home")
       const toDo =  document.createElement("section");
+      const todoHeader = document.createElement("header");
+      const todoBody = document.createElement("div");
+      todoBody.className = "todo-body";
+      todoHeader.className = "todo-header";
       toDo.className = "todo";
       const toDoTitle = document.createElement("h2");
+      toDoTitle.className = "todo-title";
       toDoTitle.textContent = projectObj.title;
       const closeBtn = document.createElement("span");
       closeBtn.className = "close";
@@ -163,9 +168,14 @@ function renderProjects() {
 
 
         homeSection.textContent = "";
+
+
         homeSection.appendChild(toDo);
-        toDo.appendChild(toDoTitle);
-        toDo.appendChild(closeBtn);
+
+        toDo.appendChild(todoHeader);
+        toDo.appendChild(todoBody);
+        todoHeader.appendChild(toDoTitle);
+        todoHeader.appendChild(closeBtn);
 
         closeBtn.addEventListener("click", () => {
           homeSection.textContent = "";

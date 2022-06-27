@@ -451,11 +451,10 @@ body.dark .home .text{
 
 .todo {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
     padding: 10px;
     border-radius: 5px;
-    background-color: rgba(204, 38, 38, 0.15);  
+    background-color: rgba(255, 255, 255, 0.418);  
  backdrop-filter: blur(5px);
 max-width: 75%;
  min-height: 85%;
@@ -484,8 +483,32 @@ max-width: 75%;
     font-size: 35px;
     font-weight: bold;
     cursor: pointer;
+    display: block;
 }
 
 .close:hover {
     color: red;
+}
+
+.todo-header {
+    display: flex;
+    flex-direction: row;
+    align-items: space-between;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+.todo-title {
+    display: block;
+    font-size: 2.5em;
+}
+
+.todo-body {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(83, 58, 58, 0.151);  
+     backdrop-filter: blur(5px);
+     min-height: fi
 }
