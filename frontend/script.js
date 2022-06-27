@@ -197,6 +197,7 @@ function renderProjects() {
         const todoSpanSecond = document.createElement("span");
         const trash = document.createElement("i");
         trash.className = "bx bx-trash icon iconTrash";
+        
 
         todoLabel.className = "tasks-list-item";
         todoInput.className = "tasks-list-cb";
@@ -208,6 +209,9 @@ function renderProjects() {
         todoSpanSecond.className = "tasks-list-desc";
 
         //takes input from todo input field and adds it to the todo list
+
+
+
         todoSpanSecond.textContent = todoInputFill.value;
 
         todoBody.appendChild(todoLabel);
@@ -216,21 +220,12 @@ function renderProjects() {
         todoLabel.appendChild(todoSpanSecond);
         todoLabel.appendChild(trash);
 
-        trash.addEventListener("click", (e) => {
-          e.preventDefault();
-          todoLabel.remove();
-        })
-
-
-
-
-        // add todo to local storage on existing json file inside of an array
         const todoObj = {
           title: todoSpanSecond.textContent,
           id: Date.now(),
           completed: false,
         }
-
+        trash.id = todoObj.id;
         
 
         todoInput.addEventListener("click", () => {
@@ -240,62 +235,61 @@ function renderProjects() {
 
 
 
+
         let todoJson = JSON.parse(localStorage.getItem(projectObj.id));
 
         todoJson.toDoList.push(todoObj);
 
+
+
         
+
+
+
         localStorage.setItem(projectObj.id, JSON.stringify(todoJson));
 
         todoJson = JSON.parse(localStorage.getItem(projectObj.id));
         
         console.log(todoJson);
 
-        // get items from json array and render them on the DOM
+         
+        // remove from local storage and on DOM
 
-        let todoList = todoJson.toDoList;
+        trash.addEventListener("click", (e) => {
+          e.preventDefault();
+          todoLabel.remove();
 
-        for (let i = 0; i < todoList.length; i++) {
-          const todoLabel = document.createElement("label");
-          const todoInput = document.createElement("input");
-          const todoSpanFirst = document.createElement("span");
-          const todoSpanSecond = document.createElement("span");
-          const trash = document.createElement("i");
-          trash.className = "bx bx-trash icon iconTrash";
+        
+          
+          const deleteItem = JSON.parse(localStorage.getItem(projectObj.id))
+          console.log(deleteItem) 
+          console.log (trash.id)
 
-          todoLabel.className = "tasks-list-item";
-          todoInput.className = "tasks-list-cb";
-          todoInput.type = "checkbox";
-          todoInput.name = "tasks";
+          deleteItem.toDoList.forEach((item, index) => {
+            if (item.id == trash.id) {
+              deleteItem.toDoList.splice(index, 1);
+            }
+          });
+          
 
-          // create a new task
-          todoSpanFirst.className = "tasks-list-mark";
-          todoSpanSecond.className = "tasks-list-desc";
+          localStorage.setItem(projectObj.id, JSON.stringify(deleteItem));
+          
 
-          //takes input from todo input field and adds it to the todo list
-          todoSpanSecond.textContent = todoList[i].title;
 
-          todoBody.appendChild(todoLabel);
-          todoLabel.appendChild(todoInput);
-          todoLabel.appendChild(todoSpanFirst);
-          todoLabel.appendChild(todoSpanSecond);
-          todoLabel.appendChild(trash);
 
-          trash.addEventListener("click", (e) => {
-            e.preventDefault();
-            todoLabel.remove();
-          }
-          )
 
-          todoInput.addEventListener("click", () => {
-            console.log("checked ")
-            todoList[i].completed = true;
-          }
-          )
-        }
+        })
 
         
 
+
+   
+
+
+        // add todo to local storage on existing json file inside of an array
+
+
+   
 
 
       });
@@ -317,3 +311,4 @@ function renderProjects() {
   }
 }
 renderProjects();
+
