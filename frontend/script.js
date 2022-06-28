@@ -1,4 +1,3 @@
-
 // light dark mode
 
 const body = document.querySelector("body"),
@@ -144,6 +143,7 @@ function renderProjects() {
 
     const todoBtn = document.querySelector(`[href='${projectObj.id}']`);
 
+
     todoBtn.addEventListener("click", (e) => {
       e.preventDefault();
 
@@ -158,6 +158,7 @@ function renderProjects() {
       const toDoTitle = document.createElement("h2");
       const closeBtn = document.createElement("span");
 
+
       todoForm.className = "todo-form";
       todoInputFill.className = "todo-input";
       todoButton.className = "todo-button";
@@ -169,7 +170,6 @@ function renderProjects() {
       toDoTitle.className = "todo-title " + projectObj.id;
       
       
-
       closeBtn.textContent = `X`;
       toDoTitle.textContent = projectObj.title;
       todoInputFill.placeholder = "Add a task";
@@ -191,8 +191,11 @@ function renderProjects() {
       todoForm.appendChild(todoButton);
 
       // add todo to local storage and on DOM
+
+   
       todoButton.addEventListener("click", (e) => {
         e.preventDefault();
+
 
         const todoLabel = document.createElement("label");
         const todoInput = document.createElement("input");
@@ -204,8 +207,9 @@ function renderProjects() {
 
         todoLabel.className = "tasks-list-item";
         todoInput.className = "tasks-list-cb";
-        todoInput.type = "checkbox";
+        todoInput.type = "form-check-input";
         todoInput.name = "tasks";
+
 
         // create a new task
         todoSpanFirst.className = "tasks-list-mark";
@@ -214,17 +218,8 @@ function renderProjects() {
         //takes input from todo input field and adds it to the todo list
 
 
-
-        todoSpanSecond.textContent = todoInputFill.value;
-
-        todoBody.appendChild(todoLabel);
-        todoLabel.appendChild(todoInput);
-        todoLabel.appendChild(todoSpanFirst);
-        todoLabel.appendChild(todoSpanSecond);
-        todoLabel.appendChild(trash);
-
         const todoObj = {
-          title: todoSpanSecond.textContent,
+          title: todoInputFill.value,
           id: Date.now(),
           completed: false,
         }
@@ -238,23 +233,38 @@ function renderProjects() {
 
 
 
-
         let todoJson = JSON.parse(localStorage.getItem(projectObj.id));
-
         todoJson.toDoList.push(todoObj);
-
-
-
-        
-
-
-
         localStorage.setItem(projectObj.id, JSON.stringify(todoJson));
-
         todoJson = JSON.parse(localStorage.getItem(projectObj.id));
-        
-        console.log(todoJson);
 
+
+        // for (let i = 0; i < todoJson.toDoList.length; i++) {
+
+        // todoBody.appendChild(todoLabel);
+        // todoLabel.appendChild(todoInput);
+        // todoLabel.appendChild(todoSpanFirst);
+        // todoLabel.appendChild(todoSpanSecond);
+        // todoLabel.appendChild(trash);
+
+
+        // todoSpanSecond.textContent = todoJson.toDoList[i].title;
+        // console.log(todoJson.toDoList[i].title);
+
+        // }
+
+          // use foreach to loop trough localstorage todo list and render on dom
+
+          todoJson.toDoList.forEach(todo => {
+            todoBody.appendChild(todoLabel);
+            todoLabel.appendChild(todoInput);
+            todoLabel.appendChild(todoSpanFirst);
+            todoLabel.appendChild(todoSpanSecond);
+            todoLabel.appendChild(trash);
+
+            todoSpanSecond.textContent += todo.title;
+            console.log(todo.title);
+          });
          
         // remove from local storage and on DOM
 
@@ -277,9 +287,6 @@ function renderProjects() {
 
           localStorage.setItem(projectObj.id, JSON.stringify(deleteItem));
           
-
-
-
 
         })
 
@@ -321,27 +328,27 @@ renderProjects();
 
 
 
-function renderFromLocalStorage() {
+// function renderFromLocalStorage() {
   
-  const keyLocalstorage = Object.keys(localStorage);
+//   const keyLocalstorage = Object.keys(localStorage);
 
 
  
 
-  keyLocalstorage.forEach((key) => {
-    const projectObj = JSON.parse(localStorage.getItem(key));
+//   keyLocalstorage.forEach((key) => {
+//     const projectObj = JSON.parse(localStorage.getItem(key));
 
     
 
 
-    for (let i = 0; i < projectObj.toDoList.length; i++) {
-      console.log(projectObj.toDoList[i]);
-  }
+//     for (let i = 0; i < projectObj.toDoList.length; i++) {
+//       console.log(projectObj.toDoList[i]);
+//   }
   
 
   
 
-})}
+// })}
 
 
-renderFromLocalStorage();
+// renderFromLocalStorage();
