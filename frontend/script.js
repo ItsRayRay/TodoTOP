@@ -331,17 +331,17 @@ function renderFromLocalStorage() {
   keyLocalstorage.forEach((key) => {
     const projectObj = JSON.parse(localStorage.getItem(key));
 
-    console.log(projectObj.toDoList);
-
-
-
     
-  })
+
+
+    for (let i = 0; i < projectObj.toDoList.length; i++) {
+      console.log(projectObj.toDoList[i]);
+  }
   
 
   
 
-}
+})}
 
 
 renderFromLocalStorage();
