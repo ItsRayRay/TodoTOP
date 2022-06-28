@@ -1,3 +1,4 @@
+
 // light dark mode
 
 const body = document.querySelector("body"),
@@ -165,7 +166,9 @@ function renderProjects() {
       todoFooter.className = "todo-footer";
       toDo.className = "todo";
       closeBtn.className = "close";
-      toDoTitle.className = "todo-title";
+      toDoTitle.className = "todo-title " + projectObj.id;
+      
+      
 
       closeBtn.textContent = `X`;
       toDoTitle.textContent = projectObj.title;
@@ -312,3 +315,33 @@ function renderProjects() {
 }
 renderProjects();
 
+
+
+
+
+
+
+function renderFromLocalStorage() {
+  
+  const keyLocalstorage = Object.keys(localStorage);
+
+
+ 
+
+  keyLocalstorage.forEach((key) => {
+    const projectObj = JSON.parse(localStorage.getItem(key));
+
+    console.log(projectObj.toDoList);
+
+
+
+    
+  })
+  
+
+  
+
+}
+
+
+renderFromLocalStorage();
