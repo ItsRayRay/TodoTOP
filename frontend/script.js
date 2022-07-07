@@ -7,7 +7,7 @@ function startUp (){
     projectElement.classList.add("project");
     projectElement.id = project.id;
     projectElement.innerHTML = `<li id="modalBtn" class="nav-link">
-<a onclick = "renderTodoList()" class="projectTitle" href="#">
+<a onclick = "renderTodoList(${project.id})" class="projectTitle" href="#">
 <i class='bx bx-list-check icon'></i>
     <span id="${project.title}"  class="text nav-text">${project.title}</span>
 </a>
@@ -142,6 +142,9 @@ function addTodoToLocalStorage() {
 }
 
 
+
+
+
 addTodoToLocalStorage();
 
 
@@ -152,19 +155,26 @@ document.querySelector(".projectTitle").addEventListener("click", function(e) {
 )
 
 
-function renderTodoList() {
+function renderTodoList(ref) {
 
-const homeSection = document.querySelector(".home");
-const toDo = document.createElement("section");
-const todoHeader = document.createElement("header");
-const todoBody = document.createElement("div");
-const todoFooter = document.createElement("footer");
-const todoForm = document.createElement("form");
-const todoInputFill = document.createElement("input");
-const todoButton = document.createElement("button");
-const toDoTitle = document.createElement("h2");
-const closeBtn = document.createElement("span");
 
+ const projects = JSON.parse(localStorage.getItem("projects")) || [];
+
+  projects.forEach(project => {
+    if (project.id == ref) {
+
+    const homeSection = document.querySelector(".home");
+    const toDo = document.createElement("section");
+    toDo.id = ref
+    const todoHeader = document.createElement("header");
+    const todoBody = document.createElement("div");
+    const todoFooter = document.createElement("footer");
+    const todoForm = document.createElement("form");
+    const todoInputFill = document.createElement("input");
+    const todoButton = document.createElement("button");
+    const toDoTitle = document.createElement("h2");
+    const closeBtn = document.createElement("span");
+    
 todoForm.className = "todo-form";
 todoInputFill.className = "todo-input";
 todoButton.className = "todo-button";
@@ -173,10 +183,10 @@ todoHeader.className = "todo-header";
 todoFooter.className = "todo-footer";
 toDo.className = "todo";
 closeBtn.className = "close";
-toDoTitle.className = "todo-title " 
+toDoTitle.className = "project.title"
 
 closeBtn.innerHTML = `<p onclick = "closeTodo()"  >X</p>`;
-toDoTitle.textContent = "test"
+toDoTitle.textContent = project.title;
 todoInputFill.placeholder = "Add a task";
 todoButton.textContent = "Add";
 todoButton.innerHTML = `<p onclick = "addTodoToProject() ">Add</p>`;
@@ -191,7 +201,18 @@ todoHeader.appendChild(closeBtn);
 todoFooter.appendChild(todoForm);
 todoForm.appendChild(todoInputFill);
 todoForm.appendChild(todoButton);
+
+    }
+  }
+  )
 }
+
+
+
+
+
+
+
 
 function closeTodo() {
   const homeSection = document.querySelector(".home");
