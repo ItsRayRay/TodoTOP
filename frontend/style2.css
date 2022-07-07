@@ -557,7 +557,16 @@ max-width: 50%;
 
 
 
+.trashicon {
+    color: red;
+    font-size: larger;
+}
 
+.trashicon:hover {
+    cursor: pointer;
+    color: red;
+    font-size: larger;
+}
 
 /* ============task  styling=============== */
 
