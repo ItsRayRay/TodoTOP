@@ -127,26 +127,6 @@ projectSubmitBtn.addEventListener("click", function(e) {
 )
 
 // check if project ID is same as the project ID in the todo list
-function addTodoToLocalStorage() {
-  const projectID = document.querySelector(".project")
-  const Projects = JSON.parse(localStorage.getItem("projects")) || [];
-  const todo = new Todo("itsatest", Date.now(), projectID.id);
-
-  Projects.forEach(project => {
-    if (project.id == todo.projectId) {
-      project.todo.push(todo);
-    }
-  }
-  );
-  localStorage.setItem("projects", JSON.stringify(Projects));
-}
-
-
-
-
-
-addTodoToLocalStorage();
-
 
 document.querySelector(".projectTitle").addEventListener("click", function(e) {
   e.preventDefault();
@@ -189,7 +169,7 @@ closeBtn.innerHTML = `<p onclick = "closeTodo()"  >X</p>`;
 toDoTitle.textContent = project.title;
 todoInputFill.placeholder = "Add a task";
 todoButton.textContent = "Add";
-todoButton.innerHTML = `<p onclick = "addTodoToProject() ">Add</p>`;
+todoButton.innerHTML = `<p onclick = "addTodoToLocalStorage(${project.id}) ">Add</p>`;
 homeSection.textContent = "";
 
 homeSection.appendChild(toDo);
@@ -220,3 +200,32 @@ function closeTodo() {
 }
 
 
+
+// 
+
+function addTodoToLocalStorage(ref) {
+  const projectID = document.querySelector(".project")
+  const Projects = JSON.parse(localStorage.getItem("projects")) || [];
+  const todoInputValue = document.querySelector(".todo-input").value;
+  console.log(todoInputValue);
+  const todo = new Todo(todoInputValue, Date.now(), projectID.id);
+  console.log(ref)
+  
+  Projects.forEach(project => {
+    if (project.id == todo.projectId) {
+      project.todo.push(todo);
+    }
+  }
+  );
+  localStorage.setItem("projects", JSON.stringify(Projects));
+}
+
+
+
+  function renderTodoToDomElement() {
+    const projects = JSON.parse(localStorage.getItem("projects")) || [];
+    
+    console.log(projects[0].todo)
+  }
+
+  renderTodoToDomElement();
