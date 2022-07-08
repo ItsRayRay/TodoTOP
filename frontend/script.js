@@ -31,13 +31,6 @@ for (let i = 0; i < localStorage.length; i++) {
 
 
 
-
-
-
-
-
-
-
 startUp()
 
 
@@ -242,59 +235,27 @@ function addTodoToLocalStorage(ref) {
 
 }
 
-
-
-
-
-
   function renderTodoToDomElement(ref) {
-
-
-    const todoLabel = document.createElement("label");
-    const todoInput = document.createElement("input");
-    const todoSpanFirst = document.createElement("span");
-    const todoSpanSecond = document.createElement("span");
-    const trash = document.createElement("i");
-    const todo = document.createElement("div");
-    trash.className = "bx bx-trash icon iconTrash";
     
-
-    todoLabel.className = "tasks-list-item";
-    todoInput.className = "tasks-list-cb";
-    todoInput.type = "form-check-input";
-    todoInput.name = "tasks";
-    
-
-    // create a new task
-    todoSpanFirst.className = "tasks-list-mark";
-    todoSpanSecond.className = "tasks-list-desc";
-
-
     const Projects = JSON.parse(localStorage.getItem(ref)) || [];
-  
-    for (let i = 0; i < Projects[0].todo.length; i++) {
-     // console.log(Projects[0].todo[i])
-      todo.className = "todo-item";
-      todo.id = Projects[0].todo[i];
-      todo.innerHTML = `<label class="tasks-list-item">
-      <input class="tasks-list-cb" type="checkbox" name="tasks">
-      <span class="tasks-list-mark">
-        <i onclick="setCompletedToTrue(${ref})"class="bx bx-check-circle icon iconCheck"></i>
-      </span>
-      <span class="tasks-list-desc">${Projects[0].todo[i].title}</span>
-      <span class="tasks-list-action">
-        <i  onclick="removeToDoFromLocalStorage(${ref} ,${Projects[0].todo[i].id})" class="bx bx-trash icon iconTrash"></i>
-      </span>
-    </label>`;
-      document.querySelector(".todo-body").appendChild(todo);
+    document.querySelector(".todo-body").innerHTML = "";
 
-      }
+    for (let i = 0; i < Projects[0].todo.length; i++) {;
+    document.querySelector(".todo-body").innerHTML += `<label class="tasks-list-item">
+    <input class="tasks-list-cb" type="checkbox" name="tasks">
+    <span class="tasks-list-mark">
+      <i onclick="setCompletedToTrue(${ref})"class="bx bx-check-circle icon iconCheck"></i>
+    </span>
+    <span class="tasks-list-desc">${Projects[0].todo[i].title}</span>
+    <span class="tasks-list-action">
+      <i  onclick="removeToDoFromLocalStorage(${ref} ,${Projects[0].todo[i].id})" class="bx bx-trash icon iconTrash"></i>
+    </span>
+  </label>`;
+
+    }
 
   }
-
-
-
-
+  
 
   function removeToDoFromLocalStorage(ref, id) {
   
@@ -312,6 +273,9 @@ function addTodoToLocalStorage(ref) {
             // logs array with all todos 
            // this is connected with the project 
            // need to remove the todo from the array
+            // need to remove the todo from the local storage
+
+          
 
 
             localStorage.setItem(ref, JSON.stringify(Projects));
