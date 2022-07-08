@@ -9,7 +9,7 @@ for (let i = 0; i < localStorage.length; i++) {
   const projects = JSON.parse(localStorage.getItem(key)) || [];
   
  
-  console.log(projects[0].title)
+ // console.log(projects[0].title)
 
   const projectElement = document.createElement("div");
   projectElement.className = "project";
@@ -132,7 +132,7 @@ class Todo {
   }
   )
 
-  console.log(projects)
+  //console.log(projects)
 
 
  }
@@ -255,6 +255,7 @@ function addTodoToLocalStorage(ref) {
     const todoSpanFirst = document.createElement("span");
     const todoSpanSecond = document.createElement("span");
     const trash = document.createElement("i");
+    const todo = document.createElement("div");
     trash.className = "bx bx-trash icon iconTrash";
     
 
@@ -262,7 +263,7 @@ function addTodoToLocalStorage(ref) {
     todoInput.className = "tasks-list-cb";
     todoInput.type = "form-check-input";
     todoInput.name = "tasks";
-
+    
 
     // create a new task
     todoSpanFirst.className = "tasks-list-mark";
@@ -272,11 +273,10 @@ function addTodoToLocalStorage(ref) {
     const Projects = JSON.parse(localStorage.getItem(ref)) || [];
   
     for (let i = 0; i < Projects[0].todo.length; i++) {
-      console.log(Projects[0].todo[i])
-      const todo = document.createElement("div");
+     // console.log(Projects[0].todo[i])
       todo.className = "todo-item";
       todo.id = Projects[0].todo[i];
-      todo.innerHTML += `<label class="tasks-list-item">
+      todo.innerHTML = `<label class="tasks-list-item">
       <input class="tasks-list-cb" type="checkbox" name="tasks">
       <span class="tasks-list-mark">
         <i onclick="setCompletedToTrue(${ref})"class="bx bx-check-circle icon iconCheck"></i>
@@ -299,20 +299,20 @@ function addTodoToLocalStorage(ref) {
   function removeToDoFromLocalStorage(ref, id) {
   
     const Projects = JSON.parse(localStorage.getItem(ref)) || [];
-    console.log(id)
+  //  console.log(id)
 
     
      if (confirm("Are you sure you want to delete this task?") || Projects[0].todo.length > 0) {
         Projects[0].todo.forEach(project => {
           if (project.id == id) {
 
-            Projects[0].todo.splice(project, 1);
+           // Projects[0].todo.splice(project, 1);
             console.log(Projects[0].todo)
+            console.log(id)
             // logs array with all todos 
            // this is connected with the project 
            // need to remove the todo from the array
 
-           
 
             localStorage.setItem(ref, JSON.stringify(Projects));
    
