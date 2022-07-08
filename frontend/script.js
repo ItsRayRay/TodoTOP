@@ -305,9 +305,17 @@ function addTodoToLocalStorage(ref) {
      if (confirm("Are you sure you want to delete this task?") || Projects[0].todo.length > 0) {
         Projects[0].todo.forEach(project => {
           if (project.id == id) {
+
             Projects[0].todo.splice(project, 1);
+            console.log(Projects[0].todo)
+            // logs array with all todos 
+           // this is connected with the project 
+           // need to remove the todo from the array
+
+           
+
             localStorage.setItem(ref, JSON.stringify(Projects));
-            window.location.reload();
+   
           }
         }
         )
